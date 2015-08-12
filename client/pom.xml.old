@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gwt-modular</artifactId>
+        <groupId>org.dyndns.bootless</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>client</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--<goal>i18n</goal> -->
+                            <goal>compile</goal>
+                            <goal>resources</goal>
+                            <!--<goal>test</goal> -->
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-user</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-dev</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <strict>false</strict>
+                    <port>8080</port>
+                    <noServer>true</noServer>
+                    <runTarget>index.html</runTarget>
+                    <module>org.dyndns.bootless.client</module>
+                    <compileReport>false</compileReport>
+                    <bindAddress>0.0.0.0</bindAddress>
+                    <extraJvmArgs>-XX:PermSize=3048m -Xmx4048m -Xss128M</extraJvmArgs>
+                    <localWorkers>4</localWorkers>
+                    <!-- ENABLE FOR EXTRA DEBUGGING BUT SLOW PERFORMANCE <style>PRETTY</style>-->
+                    <!-- ENABLE FOR EXTRA DEBUGGING BUT SLOW PERFORMANCE <draftCompile>true</draftCompile>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
